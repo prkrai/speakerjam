@@ -1,0 +1,17 @@
+# Environment files
+.env
+.env.local
+backend/.env
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.next/
+
+# Uploaded files
+backend/uploads/
+
+# Logs
+*.log

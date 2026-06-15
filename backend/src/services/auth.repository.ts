@@ -26,9 +26,9 @@ export const authRepository = {
   async storeRefreshToken(userId: string, token: string) {
     const tokenHash = await bcrypt.hash(token, 10);
     await pool.query(
-      'INSERT INTO refresh_tokens (user_id, token_hash, expires_at) VALUES ($1, $2, NOW() + INTERVAL \"30 days\")',
-      [userId, tokenHash],
-    );
+  "INSERT INTO refresh_tokens (user_id, token_hash, expires_at) VALUES ($1, $2, NOW() + INTERVAL '30 days')",
+  [userId, tokenHash],
+);
   },
 
   async findRefreshToken(token: string) {
