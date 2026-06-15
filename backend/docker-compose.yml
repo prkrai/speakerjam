@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  backend:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      JWT_SECRET: dev-secret
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: syncjam
+      POSTGRES_PASSWORD: syncjam
+      POSTGRES_DB: syncjam
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
