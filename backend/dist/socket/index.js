@@ -17,10 +17,8 @@ function registerSocketHandlers(io) {
             const t1 = Number(payload?.t1 ?? Date.now());
             const t2 = Date.now();
             const t3 = Date.now();
-            const t4 = Date.now();
-            const { offsetMs, rttMs } = (0, playback_service_1.calculateClockSync)(t1, t2, t3, t4);
-            (0, playback_service_1.logPlaybackEvent)('CLOCK_SYNC', { offsetMs, rttMs, serverTime: t3 });
-            socket.emit('clock_sync', { offsetMs, rttMs, serverTime: t3 });
+            (0, playback_service_1.logPlaybackEvent)('CLOCK_SYNC', { t1, t2, t3 });
+            socket.emit('clock_sync', { t1, t2, t3 });
         });
         socket.on('playback_scheduled', (payload) => {
             const startAt = Date.now() + 5000;

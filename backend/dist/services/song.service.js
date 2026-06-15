@@ -45,6 +45,9 @@ exports.songService = {
     async getSong(songId) {
         return song_repository_1.songRepository.findById(songId);
     },
+    async getSongs() {
+        return song_repository_1.songRepository.findAll();
+    },
     async assignSong(songId, roomId) {
         await song_repository_1.songRepository.assignToRoom(songId, roomId);
         return { songId, roomId };

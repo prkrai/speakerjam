@@ -35,6 +35,15 @@ router.post('/rooms/:roomId/song', auth_1.requireAuth, async (req, res, next) =>
         next(error);
     }
 });
+router.get('/', auth_1.requireAuth, async (req, res, next) => {
+    try {
+        const songs = await song_service_1.songService.getSongs();
+        res.status(200).json(songs);
+    }
+    catch (error) {
+        next(error);
+    }
+});
 router.get('/:id', auth_1.requireAuth, async (req, res, next) => {
     try {
         const songId = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;

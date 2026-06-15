@@ -30,4 +30,9 @@ export const songRepository = {
   async assignToRoom(songId: string, roomId: string) {
     await pool.query('UPDATE songs SET room_id = $1, updated_at = NOW() WHERE id = $2', [roomId, songId]);
   },
+
+  async findAll() {
+    const result = await pool.query('SELECT * FROM songs ORDER BY created_at DESC');
+    return result.rows;
+  },
 };

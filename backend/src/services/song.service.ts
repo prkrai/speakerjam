@@ -42,6 +42,10 @@ export const songService = {
     return songRepository.findById(songId);
   },
 
+  async getSongs() {
+    return songRepository.findAll();
+  },
+
   async assignSong(songId: string, roomId: string) {
     await songRepository.assignToRoom(songId, roomId);
     return { songId, roomId };
